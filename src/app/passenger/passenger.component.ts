@@ -59,7 +59,7 @@ export class PassengerComponent {
 
       // Check if Age field is empty or not a number
 
-      if (!this.age[i] || isNaN(this.age[i])) {
+      else if (!this.age[i] || isNaN(this.age[i])) {
 
         this.ageErrors[i] = 'Please enter a valid age';
 
@@ -69,7 +69,7 @@ export class PassengerComponent {
 
       // Check if Gender field is empty
 
-      if (!this.gender[i]) {
+      else if (!this.gender[i]) {
 
         this.genderErrors[i] = 'Please select a gender';
 
@@ -79,7 +79,7 @@ export class PassengerComponent {
 
       // Check if Mobile field is empty or invalid format
 
-      if (!this.mobileNo[i] || !/^(\+\d{1,3}[- ]?)?\d{10}$/.test(this.mobileNo[i])) {
+      else if (!this.mobileNo[i] || !/^(\+\d{1,3}[- ]?)?\d{10}$/.test(this.mobileNo[i])) {
 
         this.mobileErrors[i] = 'Please enter a valid mobile number';
 
@@ -89,13 +89,17 @@ export class PassengerComponent {
 
       // Check if Email field is empty or invalid format
 
-      if (!this.email[i] || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email[i])) {
+      else if (!this.email[i] || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email[i])) {
 
         this.emailErrors[i] = 'Please enter a valid email address';
 
         return;
 
       }
+      else {
+        this.router.navigate(['/ticket']);
+      }
+
 
       const passengerDto = new PassengerDto(this.name[i],this.email[i],this.mobileNo[i],this.age[i],this.gender[i])
 

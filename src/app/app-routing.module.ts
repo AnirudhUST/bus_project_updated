@@ -12,6 +12,7 @@ import { SeatsComponent } from './seats/seats.component';
 import { UpdatebusComponent } from './updatebus/updatebus.component';
 import { ViewbusComponent } from './viewbus/viewbus.component';
 import { ViewscheduleComponent } from './viewschedule/viewschedule.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 const routes: Routes = [
   {path:'search',component:SearchBusComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path:'viewbus',component:ViewbusComponent},
   {path:'updatebus',component:UpdatebusComponent},
   {path:'addschedule',component:AddscheduleComponent},
-  {path:'viewschedule',component:ViewscheduleComponent}
+  {path:'viewschedule',component:ViewscheduleComponent},
+  {path:'ticket',component:TicketComponent}
 ];
 
 @NgModule({
