@@ -1,13 +1,8 @@
 <div class="card"> 
   <button class="dismiss" type="button">×</button> 
   <div class="header"> 
-      <div class="typewriter">
-          <div class="slide"><i></i></div>
-          <div class="paper"></div>
-          <div class="keyboard"></div>
-      </div>
          <div class="content">
-         <span class="title">Verify Your Ticket</span>  
+            <span class="title">Verify Your Ticket</span>  
          </div> 
          <br>
          <div class="details">
@@ -18,7 +13,7 @@
   
             <div class="col-sm-7">
               
-              <p id="source" style="padding-top: 8px;">Your Source</p>
+              <p id="source" style="padding-top: 8px;">{{source}}</p>
   
             </div>
   
@@ -33,7 +28,7 @@
   
             <div class="col-sm-7">
   
-              <p id="destination"  style="padding-top: 8px;">Your Destination</p>
+              <p id="destination"  style="padding-top: 8px;">{{destination}}</p>
   
             </div>
   
@@ -48,7 +43,7 @@
   
             <div class="col-sm-7">
   
-              <p id="bus-type"  style="padding-top: 8px;">Bus Type</p>
+              <p id="bus-type"  style="padding-top: 8px;"> {{bustype}} </p>
   
             </div>
   
@@ -63,7 +58,7 @@
   
             <div class="col-sm-7">
   
-              <p id="bus-name"  style="padding-top: 8px;">Bus Name</p>
+              <p id="bus-name"  style="padding-top: 8px;">{{busname}}</p>
   
             </div>
   
@@ -78,7 +73,7 @@
   
             <div class="col-sm-7">
   
-              <p id="date"  style="padding-top: 8px;">Date</p>
+              <p id="date"  style="padding-top: 8px;">{{date}}</p>
   
             </div>
   
@@ -89,43 +84,98 @@
   
           <div class="form-group row">
   
-            <label class="col-sm-5 col-form-label text-right"><b>Passenger Details:</b> </label>
-  
-            <div class="col-sm-7">
-  
-              <p id="passenger-details"  style="padding-top: 8px;">Passenger Details</p>
-  
+            <div class="form-group" *ngFor="let passenger of passengers; let i = index">
+              <div class="form-group row">
+                <label class="col-sm-5 col-form-label text-right"><b>Passenger {{i+1}} Details:</b></label>
+                <div class="col-sm-7">
+                  <p class="passenger-detail"><span><b>Name:</b></span> {{passengerDto[i].name}}</p>
+                  <p class="passenger-detail"><span><b>Age:</b></span> {{passengerDto[i].age}}</p>
+                  <p class="passenger-detail"><span><b>Gender:</b></span> {{passengerDto[i].gender}}</p>
+                  <p class="passenger-detail"><span><b>Email:</b></span> {{passengerDto[i].email}}</p>
+                  <p class="passenger-detail"><span><b>Mobile No:</b></span> {{passengerDto[i].mobileNo}}</p>
+                  <p class="passenger-detail"><span><b>Seat Number:</b></span> {{numofseats[i]}}</p>
+                </div>
+              </div>
+              <h1 class="fare">Fare: $<span id="fare">{{fare}}</span></h1>
             </div>
   
           </div>
-  
-  
-  
-  
-          <div class="form-group row">
-  
-            <label class="col-sm-5 col-form-label text-right"><b>Seat Number:</b></label>
-  
-            <div class="col-sm-7">
-  
-              <p id="seat-number"  style="padding-top: 8px;">Seat Number</p>
-  
-            </div>
-  
-          </div>
-  
-        </div>
          <div class="actions">
-          <h1 class="fare">Fare: $<span id="fare">0</span></h1>
-          <a class="fancy" href="#">
+          
+           <a class="fancy" href="#">
               <span class="top-key"></span>
               <span class="text">Buy Tickets</span>
               <span class="bottom-key-1"></span>
               <span class="bottom-key-2"></span>
             </a>
-            <!-- <button class="track" type="button">Track my package</button>  -->
+          </div> 
+        </div> 
+      </div> 
+    
+</div> 
 
             
-            </div> 
-            </div> 
-            </div>
+           
+            
+
+
+ 
+   
+   
+    <!-- <div class="details">
+
+      <div class="form-group row">
+        <label class="col-sm-5 col-form-label text-right"><b>Source:</b></label>
+        <div class="col-sm-7">
+          <p id="source">{{source}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-5 col-form-label text-right"><b>Destination:</b></label>
+        <div class="col-sm-7">
+          <p id="destination">{{destination}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-5 col-form-label text-right"><b>Bus Type:</b></label>
+        <div class="col-sm-7">
+          <p id="bus-type">{{bustype}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-5 col-form-label text-right"><b>Bus Name:</b></label>
+        <div class="col-sm-7">
+          <p id="bus-name">{{busname}}</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-5 col-form-label text-right"><b>Date:</b></label>
+        <div class="col-sm-7">
+          <p id="date">{{date}}</p>
+        </div>
+      </div>
+
+      <div class="form-group" *ngFor="let passenger of passengers; let i = index">
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label text-right"><b>Passenger {{i+1}} Details:</b></label>
+          <div class="col-sm-7">
+            <p class="passenger-detail"><span>Name:</span> {{passengerDto[i].name}}</p>
+            <p class="passenger-detail"><span>Age:</span> {{passengerDto[i].age}}</p>
+            <p class="passenger-detail"><span>Gender:</span> {{passengerDto[i].gender}}</p>
+            <p class="passenger-detail"><span>Email:</span> {{passengerDto[i].email}}</p>
+            <p class="passenger-detail"><span>Mobile No:</span> {{passengerDto[i].mobileNo}}</p>
+            <p class="passenger-detail"><span>Number of Seats:</span> {{numofseats[i]}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <h1 style="margin-left: 500px;" class="fare">Fare: <span id="fare">{{fare}}</span></h1>
+      </div>
+    </div>
+   
+ 
+ -->

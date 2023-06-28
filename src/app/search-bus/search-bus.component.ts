@@ -4,7 +4,8 @@ import { BusDto } from '../BusDto';
 import { DemoServiceService } from '../demo-service.service';
 import { Schedule } from '../Scheulde';
 import { Seat } from '../Seat';
-import { SeatsComponent } from '../seats/seats.component';
+// import { SeatsComponent } from '../seats/seats.component';
+import { fareRunningtimeDto } from '../fare-runningtime-dto';
 
 @Component({
   selector: 'app-search-bus',
@@ -18,41 +19,7 @@ export  class SearchBusComponent  {
     this.getDropdownValues();
   }
 
-  // navigateToAppSeats(): void {
-  //   const route = '/app-seats';
-
-  //   // Create an object with the values to be passed as query parameters
-  //   const queryParams: any = {
-  //     seat: this.seat,
-  //     fhault: this.textbox2,
-  //     thault: this.textbox3,
-  //     fare: this.fareOfSchedule,
-  //     date: this.textbox1
-  //   };
-
-  //   // Create the NavigationExtras object with the queryParams property
-  //   const navigationExtras: NavigationExtras = {
-  //     queryParams
-  //   };
-
-  //   // Navigate to the AppSeatsComponent with the specified route and navigation extras
-  //   this.router.navigate([route], navigationExtras);
-  // }
-
- 
-  // toggleDivVisibility(divId: string) {
-  //   const div  = document.getElementById(divId);
-  //   if (div!=null) {
-  //     div.style.display='block'
-  //   }
-    
-  // }
-  // @ViewChild(SeatsComponent) appSeatsComponent!: SeatsComponent;
-
-  // callProcessSeats(): void {
-  //   this.appSeatsComponent.process(this.seat);
-  // }
-  
+   
   seat:Seat[]=[]
   errorMessage: string='';
   textbox1: string='';
@@ -61,9 +28,9 @@ export  class SearchBusComponent  {
   schedules: Schedule[]=[];
   busDto: BusDto[]=[];
   dropdownValues: string[]=[];
-  fare:number[]=[];
+  fare:fareRunningtimeDto[]=[];
   fareOfSchedule:number=0
- 
+  
 
   getDropdownValues(): void {
     this.demosearch.getDropdownValues().subscribe(
@@ -78,6 +45,7 @@ export  class SearchBusComponent  {
     setfare(f:number)
     {
       this.fareOfSchedule=f
+      
     }
   search(): void {
     this.schedules=[]; 
@@ -105,6 +73,7 @@ export  class SearchBusComponent  {
           (response: any) => {
             if (Array.isArray(response)) {
               this.busDto = response as BusDto[];
+              this.demosearch.busdto=this.busDto
             } else {
               console.log("Invalid response format");
             }
@@ -123,7 +92,7 @@ export  class SearchBusComponent  {
             this.demosearch.getfare(this.textbox1, this.textbox2, this.textbox3).subscribe(
               (response: any) => {
                 if (Array.isArray(response)) {
-                  this.fare = response as  number[];
+                  this.fare = response as  fareRunningtimeDto[];
                 } else {
                   console.log("Invalid response format");
                 }
@@ -158,7 +127,8 @@ export  class SearchBusComponent  {
                   }
                 );
             
-                  }
+                 }
+       
         set(){
           this.demosearch.fare=this.fareOfSchedule;
           this.demosearch.date=this.textbox1;          

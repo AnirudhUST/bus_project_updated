@@ -13,7 +13,7 @@
       <select class="form-control" id="from"[(ngModel)]="textbox2" placeholder="From">
 
        
-
+        <option value="" disabled selected>FROM</option>
         <option *ngFor="let value of dropdownValues" [value]="value" >{{ value }}</option>
 
         
@@ -27,7 +27,7 @@
       <select class="form-control" id="to"  [(ngModel)]="textbox3" placeholder="To">
 
         
-
+        <option value="" disabled selected>To</option>
         <option *ngFor="let value of dropdownValues" [value]="value" >{{ value }}</option>
 
       
@@ -59,7 +59,7 @@
         <tr>
           <th >Date</th>
           <th >Departure Time</th>
-          <th >Arrival Time</th>
+          <th >Running Time</th>
           <th >Bus No</th>
           <th >Bus Name</th>
           <th >Bus Type</th>
@@ -73,14 +73,14 @@
         <tr *ngFor="let schedule of schedules; let i = index">
           <td>{{ schedule.date }}</td>
           <td>{{ schedule.departureTime }}</td>
-          <td>{{ schedule.arrivalTime }}</td>
+          <td>{{ fare[i].runningTime }}</td>
           <td>{{ busDto[i].busNo }}</td>
           <td>{{ busDto[i].busName }}</td>
           <td>{{ busDto[i].busType }}</td>
           <td>{{ busDto[i].totalSeats }}</td>
-          <td>{{ fare[i] }}</td>
+          <td>{{ fare[i].fare }}</td>
          
-          <td><button type="submit" (click)="getseats(schedule.scheduleId)"(click)="setfare(fare[i])"(click)="set()" routerLink="/seats">VIEW SEATS</button></td>
+          <td><button type="submit" (click)="getseats(schedule.scheduleId)"(click)="setfare(fare[i].fare)"(click)="set()" routerLink="/seats">VIEW SEATS</button></td>
         </tr>
       </tbody>
     </table>

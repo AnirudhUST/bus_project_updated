@@ -147,6 +147,9 @@
  
 
 </head>
+<div *ngIf="bookedSeats.length> 0">
+  <button style="margin-left: 550px;margin-top: 40px;" class="btn btn-primary" (click)="set()" routerLink="/passenger">Add {{seatNo}}  Passenger Details</button>
+  </div>
 
 <body class="dark-theme" style="margin-top: 0px;">
 
@@ -188,9 +191,9 @@
       
 
     </div>
-    <div *ngIf="bookedSeats.length> 0">
+    <!-- <div *ngIf="bookedSeats.length> 0">
   <button style="margin-left: 50px;" class="btn btn-primary" (click)="set()" routerLink="/passenger">Add {{seatNo}}  Passenger Details</button>
-  </div>
+  </div> -->
     <!-- <button style="margin-left: 50px;" class="btn btn-primary" (click)="set()" routerLink="/passenger">Add {{seatNo}}  Passenger Details</button> -->
 
 
